@@ -1,7 +1,5 @@
 #!/usr/bin/perl -w 
 #
-use Text::CSV;
-use XML::LibXML;
 use Data::Dumper;
 use Getopt::Long;
 
@@ -28,10 +26,15 @@ my %data_sources = get_datasources();
 
 if(exists $data_sources{$data_source})
 {
-    my $func = $data_source.$data_sources{$data_source}->{datatype};
+    #    my $func = $data_source.$data_sources{$data_source}->{datatype};
     # print "$func\n";
     my $module = $data_sources{$data_source}->{datatype};
     my $pm = "$module\.pm";
+    my $ds = $data_sources{$data_source};
+
+    $ds->{name} = $data_source;
+    $ds->{input} = $input_file;
+    $ds->{output} = $output_file;
     eval{
         require "$pm";
         $module->import();
@@ -39,7 +42,8 @@ if(exists $data_sources{$data_source})
         print "Loaded $pm\n";
         1;
     };
-    my $processor = $module->new()->process($datasources{$data_source});
+    die $@ if $@;
+    my $processor = $module->new()->process($ds);
 }else{
     die "unsupported data source\n";
 }

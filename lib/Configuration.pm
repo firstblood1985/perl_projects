@@ -8,7 +8,7 @@ my  %data_sources = (
     'AsianMetal'=>{
         'name'=>'AsinaMetal',
         'datatype'=>'XML',
-        'header'=>['PriceId','PriceName','PriceLow','PriceHigh','PriceAvg']
+        'header'=>['PriceId','PriceShowDateTime','PriceLow','PriceHigh','PriceAvg']
     }
 );
 
