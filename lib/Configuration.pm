@@ -12,10 +12,6 @@ my  %data_sources = (
     }
 );
 
-sub call{
-    print "hello\n";
-}
-
 sub get_datasources{
     return %data_sources; 
 }

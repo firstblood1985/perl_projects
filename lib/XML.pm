@@ -8,6 +8,9 @@ use Data::Dumper;
 sub new{
     my $class = shift;
     my $self->{datatype}='XML';
+    $self->{handler} = {
+    AsianMetal=>\&process_AsianMetal,
+    };
     bless $self,$class;
     return $self;
 }
@@ -20,7 +23,8 @@ sub process{
 
     #eval("process_$ds_name($ds);"); warn $@ if $@;
 
-    process_AsianMetal($ds);
+    #    process_AsianMetal($ds);
+    $self->{handler}->{$ds_name}->($ds);
 }
 sub process_AsianMetal{
     print "inside process_AsianMetal\n";
