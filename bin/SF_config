@@ -1,6 +1,6 @@
 input=SF.txt
 output=SF803.csv
 start_date=2018-01-03
-time_range=4
+time_range=120
 sf_code=SF803
 header=7,15
