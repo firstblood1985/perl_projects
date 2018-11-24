@@ -27,7 +27,19 @@ if($help)
     exit 0;
     
 }
-print "input file: $input_file\noutput file: $output_file\ndata source: $data_source\n";
+#print "input file: $input_file\noutput file: $output_file\ndata source: $data_source\n";
+if($input_file)
+{
+    print "input file: $input_file\n";
+}
+if($output_file)
+{
+    print "output file: $output_file\n";
+}
+if($data_source)
+{
+    print "data source: $data_source\n";
+}
 
 my %data_sources = get_datasources();
 
