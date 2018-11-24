@@ -23,7 +23,7 @@ GetOptions(
 ) or die "error in input options\n";
 if($help)
 {
-    print "./data_transform.pl -input_file <input_file> -output_file <output_file> -data_source <AsianMetal>\n";
+    print "./data_transform.pl -input_file <input_file> -output_file <output_file> -data_source <AsianMetal|SF>\n";
     exit 0;
     
 }
@@ -33,8 +33,6 @@ my %data_sources = get_datasources();
 
 if(exists $data_sources{$data_source})
 {
-    #    my $func = $data_source.$data_sources{$data_source}->{datatype};
-    # print "$func\n";
     my $module = $data_sources{$data_source}->{datatype};
     my $pm = "$module\.pm";
     my $ds = $data_sources{$data_source};
